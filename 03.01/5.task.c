@@ -33,8 +33,6 @@ int main()
         }
     }
     while(!ok);
-    printf("The interval: %d - %d\n", min, max);
-
 
     int random = rand() % (max - min + 1) + min;
 
