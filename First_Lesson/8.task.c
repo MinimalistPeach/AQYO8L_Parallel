@@ -7,6 +7,7 @@
 void writeInt_ToFile(FILE **fptr);
 void writeLong_ToFile(FILE **fptr);
 void writeFloat_ToFile(FILE **fptr);
+int *readInt(FILE **fptr);
 
 int main()
 {
@@ -15,8 +16,39 @@ int main()
     writeLong_ToFile(&fptr);
     writeFloat_ToFile(&fptr);
 
+    int arr[ARR_SIZE] = readInt(&fptr);
+
+
+    for (int i = 0; i < ARR_SIZE; i++)
+    {
+        printf("%d", arr[i]);
+    }
+
     getchar();
     return 0;
+}
+
+int *readInt(FILE **fptr)
+{
+    if (*fptr == NULL)
+    {
+        printf("File eleresi utvonala ures!");
+        exit(1);
+    }
+
+    fptr = fopen("8.task_int.txt", "r");
+
+    int arr[ARR_SIZE];
+
+    for (int i = 0; i < 10; i++)
+    {
+        printf("element - %d : ", i);
+        fscanf("%d", &arr[i]);
+    }
+
+    fclose(fptr);
+
+    return arr;
 }
 
 void writeInt_ToFile(FILE **fptr)
@@ -29,7 +61,6 @@ void writeInt_ToFile(FILE **fptr)
         exit(1);
     }
 
-
     fptr = fopen("8.task_int.txt", "w");
 
     for (int i = 0; i < ARR_SIZE; i++)
@@ -37,8 +68,13 @@ void writeInt_ToFile(FILE **fptr)
         fprintf(fptr, "%d, ", arr[i]);
     }
 
+    fseek(fptr, 0L, SEEK_END);
+
+    long int res = ftell(fptr);
+
     fclose(fptr);
-    printf("INT szamok kiirasa sikeres! Nyomjon ENTER-t a tovabblepeshez!");
+
+    printf("INT szamok kiirasa sikeres! Fajl merete: %ld byte. Nyomjon ENTER-t a tovabblepeshez!", res);
     getchar();
 }
 
@@ -52,7 +88,6 @@ void writeLong_ToFile(FILE **fptr)
         exit(1);
     }
 
-
     fptr = fopen("8.task_long.txt", "w");
 
     for (int i = 0; i < ARR_SIZE; i++)
@@ -60,8 +95,13 @@ void writeLong_ToFile(FILE **fptr)
         fprintf(fptr, "%d, ", arr[i]);
     }
 
+    fseek(fptr, 0L, SEEK_END);
+
+    long int res = ftell(fptr);
+
     fclose(fptr);
-    printf("LONG szamok kiirasa sikeres! Nyomjon ENTER-t a tovabblepeshez!");
+
+    printf("LONG szamok kiirasa sikeres! Fajl merete: %ld byte. Nyomjon ENTER-t a tovabblepeshez!", res);
     getchar();
 }
 
@@ -75,7 +115,6 @@ void writeFloat_ToFile(FILE **fptr)
         exit(1);
     }
 
-
     fptr = fopen("8.task_float.txt", "w");
 
     for (unsigned i = 0; i < ARR_SIZE; i++)
@@ -83,7 +122,12 @@ void writeFloat_ToFile(FILE **fptr)
         fprintf(fptr, "%.5f, ", arr[i]);
     }
 
+    fseek(fptr, 0L, SEEK_END);
+
+    long int res = ftell(fptr);
+
     fclose(fptr);
-    printf("FLOAT szamok kiirasa sikeres! Nyomjon ENTER-t a tovabblepeshez!");
+
+    printf("FLOAT szamok kiirasa sikeres! Fajl merete: %ld byte. Nyomjon ENTER-t a tovabblepeshez!", res);
     getchar();
 }
