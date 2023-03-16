@@ -19,7 +19,8 @@ int main()
     scanf("%d", &max);
 
     //printf("MAX: %d\n", max);
-    clock_t start = clock();
+    time_t start;
+    start = time(0);
     int i;
     for (i = 0; i < max; i++)
     {
@@ -40,7 +41,8 @@ int main()
         if(isPrime) primenumbers++;
         if (i % 1000 == 0)
         {
-            clock_t end = clock();
+            time_t end;
+            end = time(0);
             float seconds = (float)(end - start) / CLOCKS_PER_SEC;
             printf("\n run time: %f prime number count: %d", seconds, primenumbers);
             worksheet_write_number(worksheet, row, col,     seconds, NULL);

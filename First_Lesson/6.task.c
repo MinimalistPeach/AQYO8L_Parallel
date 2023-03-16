@@ -1,24 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
+#include "../Headers/RNG.h"
+
+#define MAX 20000
 
 int main()
 {
     int ok, input, sum;
 
-    srand(time(NULL)); // randomizáló
-
     int random[2];
-    random[0] = rand() % (RAND_MAX - 1 + 1) + 1;
-    random[1] = rand() % (RAND_MAX - 1 + 1) + 1;
+    random[0] = generateRandInt(1, MAX);
+    sleep(1);
+    random[1] = generateRandInt(1, MAX);
 
     sum = random[0] + random[1];
 
     printf("Mennyi %d+%d? ", random[0], random[1]);
 
-    clock_t start, end;
+    time_t start;
+    time_t end;
     double execution_time;
-    start = clock();
+    start = time(0);
 
     do
     {
@@ -30,9 +34,6 @@ int main()
             if (input == sum)
             {
                 ok = 1;
-                end = clock();
-                execution_time = ((double)(end - start)) / CLOCKS_PER_SEC;
-                printf("\nHelyes megoldas! A feladat %lf masodpercbe telt! ", execution_time);
             }
             else
             {
@@ -42,10 +43,16 @@ int main()
         }
         else
         {
+            ok = 0;
             printf("Egy megoldast kerek csak!! Masik megoldas: ");
         }
 
     } while (!ok);
+
+    end = time(0);
+
+    execution_time = ((double)(end - start));
+    printf("\nHelyes megoldas! A feladat %f masodpercbe telt! ", execution_time);
 
     printf("\n");
 

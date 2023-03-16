@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include "../Headers/RNG.h"
 
-int main()
+int readIn();
+
+int readIn()
 {
     int min, max, number_of_inputs, ok;
-    printf("Adja meg a minimum es a maximum erteket (pl: 2 5): ");
-
-    srand(time(NULL));//randomizáló
 
     do
     {
@@ -17,7 +16,7 @@ int main()
         {
             ok = 0;
             printf("2 szamot szukseges megadni!\n");
-            while(getchar() != '\n');
+            while (getchar() != '\n');
         }
         else if (min < 0)
         {
@@ -31,12 +30,21 @@ int main()
             printf("Az intervallum zaro elemenek nagyobbnak kell lennie mint a nyito elemnek!\n");
             ok = 0;
         }
-    }
-    while(!ok);
+    } while (!ok);
 
-    int random = rand() % (max - min + 1) + min;
+    int random = generateRandInt(min, max);
 
-    printf("A %d-%d intervallumon generalt random szam: %d", min, max, random);
+    return random;
+}
+
+int main()
+{
+
+    printf("Adja meg a minimum es a maximum erteket (pl: 2 5): ");
+    int num;
+    num = readIn();
+
+    printf("A megadott intervallumon generalt random szam: %d", num);
 
     printf("\n");
 
