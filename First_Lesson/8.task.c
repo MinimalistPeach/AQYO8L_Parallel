@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../Headers/FileManager.h"
+#include "../include/filemanager.h"
 
 int readIn();
 
@@ -53,15 +53,7 @@ int main()
     {
         printf("Fajlbairas hiba!\n");
     }
-    /*int i;
-    int *arr = readIntFromFile(count);
-    if(arr) {
-        for(i = 0; i < count; i++)
-        {
-            //printf("%d\n", arr[i]);
-        }
-        free(arr);
-    }*/
+
     getchar();
     return 0;
 }

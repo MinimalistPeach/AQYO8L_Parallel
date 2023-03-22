@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../Headers/RNG.h"
+#include "../include/rng.h"
 
 int readIn();
 
