@@ -1,10 +1,11 @@
 #include <time.h>
 #include <stdlib.h>
+#include <windows.h>
 
 
 int generateRandInt(int min, int max)
 {
-    srand(time(NULL));
+    srand((unsigned) rand());
     int number;
     number = rand() % (max - min + 1) + min;
 

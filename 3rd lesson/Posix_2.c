@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <windows.h>
 
 void *secondary_thread(void *vargp)
 {
     printf("%d.szal elinditva\n", (int*)vargp);
-    usleep(10000000);
 
     return NULL;
 }
