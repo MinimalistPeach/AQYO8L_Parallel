@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/filemanager.h"
+#include "filemanager.h"
 
 int readIn();
 

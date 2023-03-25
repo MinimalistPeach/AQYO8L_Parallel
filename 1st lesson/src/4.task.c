@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../include/rng.h"
+#include "rng.h"
 
 int main()
 {

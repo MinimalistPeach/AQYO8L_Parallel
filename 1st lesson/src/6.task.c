@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "../include/rng.h"
+#include "rng.h"
 
 #define MAX 20000
 

@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdbool.h>
-#include "../include/rng.h"
+#include "rng.h"
 #include <stdio.h>
 #include <windows.h>
 

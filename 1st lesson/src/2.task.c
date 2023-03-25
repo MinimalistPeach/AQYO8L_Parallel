@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "../include/rng.h"
+#include "rng.h"
 
 int main() {
 
