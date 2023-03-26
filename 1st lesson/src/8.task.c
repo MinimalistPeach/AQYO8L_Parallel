@@ -1,49 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "filemanager.h"
-
-int readIn();
-
-int readIn()
-{
-    int count, number_of_inputs, ok;
-
-    do
-    {
-        ok = 1;
-        number_of_inputs = scanf("%d", &count);
-        if (number_of_inputs != 1)
-        {
-            ok = 0;
-            printf("1 szamot szukseges megadni!\n");
-            while (getchar() != '\n');
-        }
-        else if (count < 0)
-        {
-            printf("Pozitiv darabszamot lehet csak megadni!!\n");
-            ok = 0;
-        }
-    } while (!ok);
-
-    return count;
-}
+#include "inputhandler.h"
 
 int main()
 {
+    int count[1];
     printf("Mennyi random szamot irjunk fajlokba? ");
-    int count = readIn();
-    long int result = writeRandFloatToFile(count);
+    getIntegerInput(count, 1, 1, 12000);
+    long int result = writeRandFloatToFile(count[0]);
     if (result > 0)
     {
         printf("Float-ok fajlba irasa sikeres! Fajlmerete: %ld byte.\n", result);
     }
-    result = writeRandIntToFile(count);
+    result = writeRandIntToFile(count[0]);
     if (result > 0)
     {
         printf("Integerek fajlba irasa sikeres! Fajlmerete: %ld byte.\n", result);
     }
 
-    result = writeRandLongToFile(count);
+    result = writeRandLongToFile(count[0]);
     if (result > 0)
     {
         printf("Long-ok fajlba irasa sikeres! Fajlmerete: %ld byte.\n", result);
