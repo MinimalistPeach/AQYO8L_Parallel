@@ -64,36 +64,50 @@ long int writeRandLongToFile(int count)
     return res;
 }
 
-/*int *readIntFromFile(int count)
+long int writeRandLettersToFile(int count)
 {
-    FILE *fp;
-    char c;
-    char temp_c[6];
-    int i = 0;
-    int *arr = malloc(count);
-    if (!arr)
-        return NULL;
+    FILE *fptr;
+    fptr = fopen("outputs/randomChars.txt", "w");
 
-    fp = fopen("Outputs/8.task_int.txt", "r");
-
-    if (fp == NULL)
+    if (fptr == NULL)
     {
-        return 0;
+        return -200;
     }
 
-    for (c = getc(fp); c != EOF; c = getc(fp))
+    int i, type, index;
+    char c[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789\n";
+    for (i = 0; i < count; i++)
     {
-        if (c != '\n')
-        {
+        fputc(c[generateRandInt(0, 64)], fptr);
+    }
+    fseek(fptr, 0L, SEEK_END);
 
-            temp_c += c;
-            printf("%c\n", temp_c);
-            arr[i] = (int)c;
-            i++;
+    long int res = ftell(fptr);
+ 
+    fclose(fptr);
+
+    return res;
+}
+
+int countLinesInFile(char *filename)
+{
+    FILE *fptr = fopen(filename, "r");
+    if (fptr == NULL)
+    {
+        return -200;
+    }
+    int num_lines;
+    num_lines = 1;
+    char ch;
+
+    while((ch = fgetc(fptr)) != EOF)
+    {
+        if(ch == '\n')
+        {
+            num_lines++;
         }
     }
+    fclose(fptr);
 
-    fclose(fp);
-
-    return arr;
-}*/
+    return num_lines;
+}
