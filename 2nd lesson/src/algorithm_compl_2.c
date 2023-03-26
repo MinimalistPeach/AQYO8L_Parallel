@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include "rng.h"
+#include "inputhandler.h"
 #include <stdio.h>
 #include <windows.h>
 
@@ -10,49 +11,46 @@ bool isUnique(int *array, int size, int currentIndex);
 
 int main()
 {
-    int size, min, max, i;
+    int min, max, i;
     LARGE_INTEGER start, end, frequency;
     double elapsed;
+    int range[2];
+    int size[1];
 
     printf("Mekkora tombbel dolgozzunk? ");
-    if (scanf("%d", &size) != 1)
-    {
-        printf("Egy adatot kertem.");
-    }
-    int arr[size];
+    getIntegerInput(size, 1, 1, 200);
+    int arr[size[0]];
 
     printf("\nMilyen tartomanyon legyenek a tomb elemei? ");
-    if (scanf("%d %d", &min, &max) != 2)
-    {
-        printf("Ketto adatot kertem.");
-    }
+    printf("\nEloszor a minimum elemet kell megadni, majd a maximumot. ");
+    getIntegerInput(range, 2, 1, 250000);
 
     QueryPerformanceFrequency(&frequency);
     QueryPerformanceCounter(&start);
 
-    generateArray(arr, min, max, size);
+    generateArray(arr, range[0], range[1], size[0]);
 
     QueryPerformanceCounter(&end);
     elapsed = (double)(end.QuadPart - start.QuadPart) / frequency.QuadPart;
 
-    printf("\n%d elemnel %lf mp-be telt elkesziteni a tombot.", size, elapsed);
+    printf("\n%d elemnel %lf mp-be telt elkesziteni a tombot.", size[0], elapsed);
 
     printf("\n");
 
-    for (i = 0; i < size; i++)
+    for (i = 0; i < size[0]; i++)
     {
-        printf("%d egyedi? %s\n", arr[i], isUnique(arr, size, i) ? "igen" : "nem");
+        printf("%d egyedi? %s\n", arr[i], isUnique(arr, size[0], i) ? "igen" : "nem");
     }
 
     printf("\n");
 
-    duplicateNumbers(arr, size);
+    printf("Szamok duplikalas 0.5 esellyel.\n");
+    duplicateNumbers(arr, size[0]);
 
-    for (i = 0; i < size; i++)
+    for (i = 0; i < size[0]; i++)
     {
-        printf("%d egyedi? %s\n", arr[i], isUnique(arr, size, i) ? "igen" : "nem");
+        printf("%d egyedi? %s\n", arr[i], isUnique(arr, size[0], i) ? "igen" : "nem");
     }
-
 
     return 0;
 }
@@ -64,7 +62,6 @@ void generateArray(int *array, int min, int max, int size)
     for (i = 0; i < size; i++)
     {
         array[i] = generateRandInt(min, max);
-        printf("%d ", array[i]);
     }
 }
 
