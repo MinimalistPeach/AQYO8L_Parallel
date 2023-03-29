@@ -20,6 +20,14 @@ float generateRandFloat(float min, float max)
     return number;
 }
 
+double generateRandDouble(double min, double max)
+{
+    srand((unsigned) rand());
+    double number;
+    number = (double)rand() / RAND_MAX * (max - min) + min;
+    return number;
+}
+
 int generateRandLong(long min, long max)
 {
     srand(time(NULL));
