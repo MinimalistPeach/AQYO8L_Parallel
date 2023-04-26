@@ -4,11 +4,21 @@
 
 #include "parallelgeneration.h"
 #include "rng.h"
+#include "matrix.h"
+#include "parallelgeneration.h"
+#include <stdio.h>
 
 int main(int argc, char *argv[])
 {
-
-    int size = generateRandInt(2000, 15000);
+    int size;
+    if(argc == 2)
+    {
+        size = atoi(argv[1]);
+    }
+    else {
+        printf("Szukseges 1 parameter, amiben a matrix meretet adjuk meg!!");
+        return 0;
+    }
 
     int **A = (int **)malloc(size * sizeof(int *));
     int **B = (int **)malloc(size * sizeof(int *));
