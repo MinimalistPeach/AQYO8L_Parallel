@@ -9,6 +9,6 @@
 #include <omp.h>
 #include "rng.h"
 
-double multiplyMatrix(int **A, int **B, int **C, int size);
+double multiplyMatrixParallel(int **A, int **B, int **C, int size, int thread_num);
 
 #endif /*PARALLELGENERATION_H*/
