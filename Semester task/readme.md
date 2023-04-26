@@ -1,13 +1,12 @@
 
 # Matrix multiplication using OpenMP parallel threads
 
-My semester task is about matrix multiplication with the use of OpenMP library. 
+My first semester task is about matrix multiplication with the use of OpenMP library. 
 
 
 ## Features
 
-- The program multiplies two matrices given by the user
-- The matrix size is also decided by the user
+- The program multiplies two matrices with random generated size and numbers.
 
 
 ## Installation
