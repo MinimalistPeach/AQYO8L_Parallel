@@ -34,11 +34,12 @@ int main(int argc, char *argv[])
 
         double parallel_time = multiplyMatrixParallel((int **)A, (int **)B, (int **)C, size, num_threads);
 
-        printf("%dx%d nagysagu matrixok szorzasanak futasi ideje parhuzamosan: %f mp\n", size, size, parallel_time);
+        printf("\n%dx%d nagysagu matrixok szorzasanak futasi ideje parhuzamosan: %f mp\n", size, size, parallel_time);
 
         double sequential_time = multiplyMatrixSeq((int **)A, (int **)B, (int **)C, size);
 
         printf("%dx%d nagysagu matrixok szorzasanak futasi ideje szekvencialisan: %f mp\n", size, size, sequential_time);
+        printf("Szekvencialis es parhuzamos futasi ido kulonbsege %dx%d matrix eseten: %f mp\n", size, size, sequential_time-parallel_time);
 
         freeMemory((int **)A, (int **)B, (int **)C, size);
     }
