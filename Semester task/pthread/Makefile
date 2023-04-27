@@ -1,4 +1,4 @@
 win:
-	gcc -fpthread src/main.c -lmingw32 -Iinclude/ -o bfs_alg.exe
+	gcc -pthread src/main.c src/node.c src/bfs.c -lmingw32 -Iinclude/ -o bfs_alg.exe
 linux:
-	gcc -fpthread src/main.c -Iinclude/ -o bfs_alg
+	gcc -pthread src/main.c src/node.c src/bfs.c -Iinclude/ -o bfs_alg
