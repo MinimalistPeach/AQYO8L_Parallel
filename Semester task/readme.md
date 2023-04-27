@@ -20,6 +20,7 @@ The arguments are the following:
 ```
 The program will output the running time of the matrix multiplication with and without parallelization.
 <br />
+
 # (C) BFS graph algorithm using pthread parallel threads
 
 My second semester task is about the usage of BFS Graph algorithm to go through a graph. It uses the pthread library for parallelization.
@@ -30,6 +31,16 @@ My second semester task is about the usage of BFS Graph algorithm to go through 
 - The program calculates the time that takes to go from the top of the graph to the bottom, then displays both sequential and parallel time
 - The program goes through all the nodes with a recursive method, meanwhile it saves the already read nodes
 
+
+## Usage
+
+After compiling the program, the user can run the bfs_alg.exe file from the commandline.
+The arguments are the following:
+<br />
+```CLI
+  .\bfs_alg.exe <number of nodes> <number of threads>
+```
+The program will output the running time of the matrix multiplication with and without parallelization.
 <br />
 
 # (C#) PI value determination using the Monte Carlo algorithm and Archimedes method
