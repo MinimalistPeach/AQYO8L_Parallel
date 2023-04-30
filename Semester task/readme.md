@@ -63,10 +63,11 @@ The program will output the running time of the algorithms with and without para
 # Installation
 
 To make the C files you will need a C compiler and Make.
+For the C# program you will need DotNET SDK 4.8.0 and .NET Framework 6.0 installed.
 You can compile all of the programs at once with the Makefile in the Semester task directory.
-Alternatively, you can compile the programs one by one in their own directory.
+Alternatively, you can compile the programs one by one in their own directory. The C# program will build in the output directory.
 
-You can compile it using the following commands:
+You can compile the programs one by one using the following commands:
 ```Make
   make win
  ```
@@ -74,9 +75,13 @@ You can compile it using the following commands:
   ```Make
   make linux
 ```
-
-To compile the C# file you will need .NET installed on your system.
-You can compile the program with the following command:
-```.NET
-  dotnet main.cs
+<br />
+To compile all the program at once run the following command:
+```Make
+  make all
+```
+<br />
+You can only run the programs from the terminal with the following command:
+```CLI
+  .\{program_name.exe} <arguments..>
 ```
