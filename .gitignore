@@ -3,3 +3,6 @@
 *.txt
 *.exe.stackdump
 *.dot
+/Semester task/Threading/.vs/
+/Semester task/Threading/bin/
+/Semester task/Threading/obj/
