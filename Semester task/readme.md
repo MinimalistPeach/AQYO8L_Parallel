@@ -43,7 +43,7 @@ The arguments are the following:
 The program will output the running time of the matrix multiplication with and without parallelization.
 <br />
 
-# (C#) PI value determination using the Monte Carlo algorithm and Archimedes method
+# (C#) PI value determination using the Monte Carlo algorithm and Leibniz method
 
 ## Features
 - The program gets the number of threads and number of points as a command line argument, then determines how many random points are in the circle's radius, then it calculates the PI value (Monte Carlo)
@@ -56,7 +56,7 @@ After compiling the program, the user can run the pi_det.exe file from the comma
 The arguments are the following:
 <br />
 ```CLI
-  .\pi_det.exe <circle radius> <number of points> <number of sides> <samplenumber> <inner circle radius> <outer circle radius>
+  .\pi_det.exe <number of threads> <number of points> <iterations>
 ```
 The program will output the running time of the algorithms with and without parallelization.
 
