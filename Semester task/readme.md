@@ -46,7 +46,7 @@ The program will output the running time of the matrix multiplication with and w
 # (C#) PI value determination using the Monte Carlo algorithm and Archimedes method
 
 ## Features
-- The program gets the circle's radius and number of points as a command line argument, then determines how many random points are in the circle's radius, then it calculates the PI value (Monte Carlo)
+- The program gets the number of threads and number of points as a command line argument, then determines how many random points are in the circle's radius, then it calculates the PI value (Monte Carlo)
 - The program gets the polygon's number of sides, the samplenumber, the circle's radius, the inner and outer circles radius from the command line, then the algorithm calculates the polygon's sides length and it's origin then it writes circles inside and outside of the polygon and the area's rate between the two gives the approximation of the PI. (Archimedes)
 
 
