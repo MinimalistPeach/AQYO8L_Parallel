@@ -72,15 +72,19 @@ You can compile the programs one by one using the following commands:
   make win
  ```
   or
-  ```Make
+```Make
   make linux
 ```
 <br />
 To compile all the program at once run the following command:
-<br/>
-make all
+<br />
+```Make
+  make all
+```
 <br />
 You can only run the programs from the terminal with the following command:
 <br />
-.\{program_name.exe} <arguments..>
+```CLI
+  .\{program_name.exe} <arguments..>
+```
 
