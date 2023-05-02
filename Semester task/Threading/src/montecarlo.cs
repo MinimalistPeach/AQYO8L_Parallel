@@ -12,24 +12,24 @@ namespace Threading
             public int pointsPerThread;
         }
 
-        public static double calcPI(long totalres, int numPoints)
+        public static double calcPi(long totalRes, int numPoints)
         {
-            double pi = 4.0 * totalres / numPoints;
+            double pi = 4.0 * totalRes / numPoints;
             return pi;
         }
 
-        public static void makeThreads(PiData pidata, int numThreads)
+        public static void makeThreads(PiData piData, int numThreads)
         {
             Random random = new Random();
 
             for (int i = 0; i < numThreads; i++)
             {
                 int threadIndex = i;
-                pidata.threads[i] = new Thread(() =>
+                piData.threads[i] = new Thread(() =>
                 {
                     long threadResult = 0;
 
-                    for (int j = 0; j < pidata.pointsPerThread; j++)
+                    for (int j = 0; j < piData.pointsPerThread; j++)
                     {
                         double x = random.NextDouble();
                         double y = random.NextDouble();
@@ -40,17 +40,17 @@ namespace Threading
                         }
                     }
 
-                    pidata.results[threadIndex] = threadResult;
+                    piData.results[threadIndex] = threadResult;
                 });
             }
         }
 
-        public static void generateRand(PiData pidata)
+        public static void generateRand(PiData piData)
         {
             Random random = new Random();
             long threadResult = 0;
 
-            for (int j = 0; j < pidata.pointsPerThread; j++)
+            for (int j = 0; j < piData.pointsPerThread; j++)
             {
                 double x = random.NextDouble();
                 double y = random.NextDouble();
@@ -61,38 +61,38 @@ namespace Threading
                 }
             }
 
-            pidata.results[0] = threadResult;
+            piData.results[0] = threadResult;
         }
-        public static double[] generatePIParallel(int numThreads, int numPoints, PiData pidata)
+        public static double[] generatePIParallel(int numThreads, int numPoints, PiData piData)
         {
             Stopwatch time = new Stopwatch();
             double[] output = new double[2];
-            pidata.results = new long[numThreads];
-            pidata.threads = new Thread[numThreads];
-            pidata.pointsPerThread = numPoints / numThreads;
+            piData.results = new long[numThreads];
+            piData.threads = new Thread[numThreads];
+            piData.pointsPerThread = numPoints / numThreads;
 
             time.Start();
 
-            makeThreads(pidata, numThreads);
+            makeThreads(piData, numThreads);
 
             for (int i = 0; i < numThreads; i++)
             {
-                pidata.threads[i].Start();
+                piData.threads[i].Start();
             }
 
             for (int i = 0; i < numThreads; i++)
             {
-                pidata.threads[i].Join();
+                piData.threads[i].Join();
             }
 
             long totalResult = 0;
 
             for (int i = 0; i < numThreads; i++)
             {
-                totalResult += pidata.results[i];
+                totalResult += piData.results[i];
             }
 
-            output[0] = calcPI(totalResult, numPoints);
+            output[0] = calcPi(totalResult, numPoints);
 
             time.Stop();
 
@@ -101,19 +101,19 @@ namespace Threading
             return output;
         }
 
-        public static double[] generatePISeq(int numPoints, PiData pidata)
+        public static double[] generatePISeq(int numPoints, PiData piData)
         {
             Stopwatch time = new Stopwatch();
             double[] output = new double[2];
-            pidata.results = new long[1];
-            pidata.threads = new Thread[1];
-            pidata.pointsPerThread = numPoints;
+            piData.results = new long[1];
+            piData.threads = new Thread[1];
+            piData.pointsPerThread = numPoints;
 
             time.Start();
 
-            generateRand(pidata);
+            generateRand(piData);
 
-            output[0] = calcPI(pidata.results[0], numPoints);
+            output[0] = calcPi(piData.results[0], numPoints);
 
             time.Stop();
 
