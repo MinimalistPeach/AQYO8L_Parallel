@@ -17,7 +17,7 @@ void init_nodes(Node *nodes, int num_of_nodes)
     }
 }
 
-void free_node_edges(Node *nodes, int num_of_nodes)
+void freeNodeEdges(Node *nodes, int num_of_nodes)
 {
     for (int i = 0; i < num_of_nodes; i++)
         free(nodes[i].edges);

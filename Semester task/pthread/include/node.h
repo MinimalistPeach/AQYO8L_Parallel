@@ -15,15 +15,15 @@ typedef struct {
     bool visited;
 } Node;
 
-/**
+/*
  * Node initalization.
 */
 void init_nodes(Node *nodes, int num_of_nodes);
 
-/**
+/*
  * Free up the allocated memory for the node edges.
 */
-void free_node_edges(Node *nodes, int num_of_nodes);
+void freeNodeEdges(Node *nodes, int num_of_nodes);
 
 
 

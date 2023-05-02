@@ -1,6 +1,6 @@
 #include "bfs.h"
 
-void *bfs_parallel(void *args)
+void *bfsParallel(void *args)
 {
     ThreadData *data = (ThreadData *)args;
     int i;
@@ -11,7 +11,7 @@ void *bfs_parallel(void *args)
     return NULL;
 }
 
-double bfs_sequential(Node *nodes, int num_nodes)
+double bfsSequential(Node *nodes, int num_nodes)
 {
     clock_t time;
     time = clock();
@@ -22,7 +22,7 @@ double bfs_sequential(Node *nodes, int num_nodes)
     }
     double runtime;
     time = clock() - time;
-    runtime = ((double)time) / CLOCKS_PER_SEC;
+    runtime = ((double)time);
 
     return runtime;
 }
@@ -34,7 +34,7 @@ int countVisitedNodes(Node *nodes, int num_nodes)
 
     for (i = 0; i < num_nodes; i++)
     {
-        if (nodes[i].visited == 1)
+        if (nodes[i].visited)
         {
             counter += 1;
         }
@@ -53,7 +53,7 @@ double startThreads(Node *nodes, int number_of_threads, int number_of_nodes)
         thread_data[i].start = i * (number_of_nodes / number_of_threads);
         thread_data[i].end = (i + 1) * (number_of_nodes / number_of_threads);
         thread_data[i].nodes = nodes;
-        pthread_create(&threads[i], NULL, bfs_parallel, (void *)&thread_data[i]);
+        pthread_create(&threads[i], NULL, bfsParallel, (void *)&thread_data[i]);
     }
 
     for (int i = 0; i < number_of_threads; i++)
@@ -62,7 +62,7 @@ double startThreads(Node *nodes, int number_of_threads, int number_of_nodes)
     }
 
     clock_t end = clock();
-    double runtime = ((double)(end - start)) / CLOCKS_PER_SEC;
+    double runtime = ((double)(end - start));
 
     freeThreads(threads, thread_data, number_of_nodes);
 
@@ -71,7 +71,6 @@ double startThreads(Node *nodes, int number_of_threads, int number_of_nodes)
 
 void freeThreads(pthread_t *threads, ThreadData *threaddata, int num_of_nodes)
 {
- 
     free(threads);
     free(threaddata);
 }
