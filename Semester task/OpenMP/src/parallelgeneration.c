@@ -1,6 +1,6 @@
 #include "parallelgeneration.h"
 
-double multiplyMatrixParallel(int **A, int **B, int **C, int size, int thread_num)
+double multiplyMatrixParallel(int *A, int *B, int *C, int size, int thread_num)
 {
     double start_time;
     start_time = omp_get_wtime();
@@ -13,7 +13,7 @@ double multiplyMatrixParallel(int **A, int **B, int **C, int size, int thread_nu
         {
             for (k = 0; k < size; k++)
             {
-                C[i][j] += A[i][k] * B[k][j];
+                C[i] += (int)A[k] * (int)B[j];
             }
         }
     }

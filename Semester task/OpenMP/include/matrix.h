@@ -8,9 +8,9 @@
 #include <malloc.h>
 
 
-void generateMatrix(int **A, int **B, int **C, int size);
+void generateMatrix(int *A, int *B, int *C, int size);
 
-void freeMemory(int **A, int **B, int **C, int size);
+void freeMemory(int *A, int *B, int *C, int size);
 
 
 #endif /*MATrIX_H*/

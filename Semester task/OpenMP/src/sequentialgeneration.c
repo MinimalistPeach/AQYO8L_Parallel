@@ -1,6 +1,6 @@
 #include "sequentialgeneration.h"
 
-double multiplyMatrixSeq(int **A, int **B, int **C, int size)
+double multiplyMatrixSeq(int *A, int *B, int *C, int size)
 {
     double start_time;
     start_time = clock();
@@ -12,7 +12,7 @@ double multiplyMatrixSeq(int **A, int **B, int **C, int size)
         {
             for (k = 0; k < size; k++)
             {
-                C[i][j] += A[i][k] * B[k][j];
+                C[i] += A[k] * B[j];
             }
         }
     }

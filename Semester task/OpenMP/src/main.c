@@ -26,22 +26,22 @@ int main(int argc, char *argv[])
     for (i = 1; i < argc - 1; i++)
     {
         size = atoi(argv[i]);
-        int **A = (int **)malloc(size * sizeof(int *));
-        int **B = (int **)malloc(size * sizeof(int *));
-        int **C = (int **)malloc(size * sizeof(int *));
+        int *A = malloc(size * sizeof(int *));
+        int *B = malloc(size * sizeof(int *));
+        int *C = malloc(size * sizeof(int *));
 
-        generateMatrix((int **)A, (int **)B, (int **)C, size);
+        generateMatrix((int *)A, (int *)B, (int *)C, size);
 
-        double parallel_time = multiplyMatrixParallel((int **)A, (int **)B, (int **)C, size, num_threads);
+        double parallel_time = multiplyMatrixParallel((int *)A, (int *)B, (int *)C, size, num_threads);
 
         printf("\n%dx%d nagysagu matrixok szorzasanak futasi ideje parhuzamosan: %f mp\n", size, size, parallel_time);
 
-        double sequential_time = multiplyMatrixSeq((int **)A, (int **)B, (int **)C, size);
+        double sequential_time = multiplyMatrixSeq((int *)A, (int *)B, (int *)C, size);
 
         printf("%dx%d nagysagu matrixok szorzasanak futasi ideje szekvencialisan: %f mp\n", size, size, sequential_time);
         printf("Szekvencialis es parhuzamos futasi ido kulonbsege %dx%d matrix eseten: %f mp\n", size, size, sequential_time-parallel_time);
 
-        freeMemory((int **)A, (int **)B, (int **)C, size);
+        freeMemory((int *)A, (int *)B, (int *)C, size);
     }
 
     return 0;

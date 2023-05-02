@@ -8,6 +8,6 @@
 #include <time.h>
 #include "rng.h"
 
-double multiplyMatrixSeq(int **A, int **B, int **C, int size);
+double multiplyMatrixSeq(int *A, int *B, int *C, int size);
 
 #endif /*SEQUENTIALGENERATION_H*/
