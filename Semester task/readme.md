@@ -78,13 +78,18 @@ You can compile the programs one by one using the following commands:
 <br />
 To compile all the program at once run the following command:
 <br />
+
 ```Make
   make all
 ```
+
 <br />
 You can only run the programs from the terminal with the following command:
 <br />
+
 ```CLI
   .\{program_name.exe} <arguments..>
-```
+ ```
+  
+
 
