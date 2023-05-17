@@ -17,13 +17,11 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("Szukseges legalabb 1 parameter, amiben a matrix meretet adjuk meg!!");
-        printf("\nRoviditett hasznalat: matrix_mult.exe <szalak szama>");
         printf("\nHasznalat: matrix_mult.exe <1.matrix nagysaga> .... <n.matrix nagysaga> <szalak szama>");
         return 0;
     }
 
-    for (i = 1; i < argc - 1; i++)
+    for (i = 1; i < argc; i++)
     {
         size = atoi(argv[i]);
         int *A = malloc(size * sizeof(int *));
@@ -34,15 +32,14 @@ int main(int argc, char *argv[])
 
         double parallel_time = multiplyMatrixParallel((int *)A, (int *)B, (int *)C, size, num_threads);
 
-        printf("\n%dx%d nagysagu matrixok szorzasanak futasi ideje parhuzamosan: %f mp\n", size, size, parallel_time);
+        printf("\n%dx%d nagysagu matrixok szorzasanak futasi ideje parhuzamosan, %d szalon: %f mp\n", size, size, num_threads, parallel_time);
 
         double sequential_time = multiplyMatrixSeq((int *)A, (int *)B, (int *)C, size);
 
         printf("%dx%d nagysagu matrixok szorzasanak futasi ideje szekvencialisan: %f mp\n", size, size, sequential_time);
-        printf("Szekvencialis es parhuzamos futasi ido kulonbsege %dx%d matrix eseten: %f mp\n", size, size, sequential_time-parallel_time);
-
-        freeMemory((int *)A, (int *)B, (int *)C, size);
+        printf("Szekvencialis es parhuzamos futasi ido kulonbsege %dx%d matrix eseten: %f mp\n", size, size, fabs(sequential_time - parallel_time));
     }
+
 
     return 0;
 }

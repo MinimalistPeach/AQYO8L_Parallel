@@ -2,7 +2,7 @@
 
 double multiplyMatrixSeq(int *A, int *B, int *C, int size)
 {
-    double start_time;
+    double start_time, run_time, end_time;
     start_time = clock();
 
     int i, j, k;
@@ -17,8 +17,8 @@ double multiplyMatrixSeq(int *A, int *B, int *C, int size)
         }
     }
 
-    double run_time;
-    run_time = clock() - start_time;
+    end_time = clock();
+    run_time = end_time - start_time;
 
     return run_time / 1000;
 }
