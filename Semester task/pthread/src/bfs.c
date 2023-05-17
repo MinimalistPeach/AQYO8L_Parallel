@@ -13,7 +13,7 @@ void *bfsParallel(void *args)
 
 double bfsSequential(Node *nodes, int num_nodes)
 {
-    clock_t time;
+    clock_t time, end_time;
     time = clock();
     int i;
     for (i = 0; i < num_nodes; i++)
@@ -21,7 +21,8 @@ double bfsSequential(Node *nodes, int num_nodes)
         nodes[i].visited = true;
     }
     double runtime;
-    time = clock() - time;
+    end_time = clock();
+    time = end_time - time;
     runtime = ((double)time);
 
     return runtime;

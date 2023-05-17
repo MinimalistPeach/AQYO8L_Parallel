@@ -20,7 +20,7 @@ namespace Threading
             numPoints = 0;
             numThreads = 0;
             precision = 0;
-            if (args.Length < 2)
+            if (args.Length < 3)
             {
                 Console.WriteLine("Hasznalat: pi_det.exe <szalak szama> <pontok szama> <iteraciok szama>");
                 System.Environment.Exit(0);
