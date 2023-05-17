@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         double sequential_time = multiplyMatrixSeq((int *)A, (int *)B, (int *)C, size);
 
         printf("%dx%d nagysagu matrixok szorzasanak futasi ideje szekvencialisan: %f mp\n", size, size, sequential_time);
-        printf("Szekvencialis es parhuzamos futasi ido kulonbsege %dx%d matrix eseten: %f mp\n", size, size, fabs(sequential_time - parallel_time));
+        printf("Szekvencialis es parhuzamos futasi ido kulonbsege %dx%d matrix eseten: %f mp\n", size, size, sequential_time - parallel_time);
     }
 
 
